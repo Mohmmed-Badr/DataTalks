@@ -1,0 +1,114 @@
+Data loader file:
+import io
+import pandas as pd
+import requests
+if 'data_loader' not in globals():
+    from mage_ai.data_preparation.decorators import data_loader
+if 'test' not in globals():
+    from mage_ai.data_preparation.decorators import test
+
+
+@data_loader
+def load_data_from_api(*args, **kwargs):
+    """
+    Template for loading data from API
+    """
+
+    # List of URLs for the datasets
+    urls = [
+        "https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2020-10.csv.gz",
+        "https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2020-11.csv.gz",
+        "https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2020-12.csv.gz"
+    ]
+
+    # List to store DataFrames
+    dfs = []
+
+    # Iterate over the list of URLs
+    for url in urls:
+        # Read the CSV file into a DataFrame
+        df = pd.read_csv(url, compression='gzip')
+        # Append the DataFrame to the list
+        dfs.append(df)
+
+    # Concatenate the list of DataFrames into a single DataFrame
+    final_df = pd.concat(dfs, ignore_index=True)
+
+    return final_df
+
+
+@test
+def test_output(output, *args) -> None:
+    """
+    Template code for testing the output of the block.
+    """
+    assert output is not None, 'The output is undefined'
+
+========
+
+Data transformer file:
+import io
+import pandas as pd
+import requests
+if 'data_loader' not in globals():
+    from mage_ai.data_preparation.decorators import data_loader
+if 'test' not in globals():
+    from mage_ai.data_preparation.decorators import test
+
+
+@data_loader
+def load_data_from_api(*args, **kwargs):
+    """
+    Template for loading data from API
+    """
+
+    # List of URLs for the datasets
+    urls = [
+        "https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2020-10.csv.gz",
+        "https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2020-11.csv.gz",
+        "https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2020-12.csv.gz"
+    ]
+
+    # List to store DataFrames
+    dfs = []
+
+    # Iterate over the list of URLs
+    for url in urls:
+        # Read the CSV file into a DataFrame
+        df = pd.read_csv(url, compression='gzip')
+        # Append the DataFrame to the list
+        dfs.append(df)
+
+    # Concatenate the list of DataFrames into a single DataFrame
+    final_df = pd.concat(dfs, ignore_index=True)
+
+    return final_df
+
+
+@test
+def test_output(output, *args) -> None:
+    """
+    Template code for testing the output of the block.
+    """
+    assert output is not None, 'The output is undefined'
+
+======
+
+Answers of questions:
+1)
+266 855 rows x 20 columns
+
+2)
+139 370 rows
+
+3)
+data['lpep_pickup_date'] = data['lpep_pickup_datetime'].dt.date
+
+4)
+1
+
+5)
+4
+
+6)
+67
