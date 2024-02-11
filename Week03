@@ -1,0 +1,15 @@
+The answers
+
+1)
+65 623 481
+2)
+18.82 MB for the External Table and 47.60 MB for the Materialized Table
+3)
+4)
+Cluster on lpep_pickup_datetime Partition by PUlocationID
+5)
+5.63 MB for non-partitioned table and 0 MB for the partitioned table
+6)
+GCP Bucket
+7)
+False
